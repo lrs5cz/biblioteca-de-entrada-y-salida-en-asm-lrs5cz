@@ -15,10 +15,12 @@ scan_char:
     push ebp
     mov ebp, esp
 
-    ; TODO:
-    ; 1. usar syscall read
-    ; 2. leer 1 byte desde stdin
-    ; 3. devolverlo en AL
+    mov eax, 3 ; sys_read
+    mov ebx, 0 ; stdin (Recibe el caracter desde el teclado)
+    mov ecx, char_buffer ; Dirección de memoria del caracter leído
+    mov edx, 1 ; Leer exactamente 1 byte (Tamaño de char)
+    int 0x80 ; Llamada al kernel
+    mov al, [char_buffer] ; Almacenamos el caracter leído en AL
 
     mov esp, ebp
     pop ebp
