@@ -11,7 +11,7 @@ print_char:
 
     push ebp
     mov ebp, esp
-    push eax ; Empujamos eax para disponer del caracter en la memoria
+    push eax ; Empujamos eax para disponer de AL en la memoria
     mov eax, 4 ; sys_write
     mov ebx, 1 ; stdout
     mov ecx, esp ; Puntero al caracter en el tope de la pila
