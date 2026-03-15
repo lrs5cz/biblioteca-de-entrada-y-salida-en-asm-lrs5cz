@@ -7,9 +7,7 @@ newline:
 
     push ebp
     mov ebp, esp
-
-    ; TODO:
-    ; imprimir '\n'
+    mov al, 10 ; ASCII para una nueva línea
 
     mov esp, ebp
     pop ebp
