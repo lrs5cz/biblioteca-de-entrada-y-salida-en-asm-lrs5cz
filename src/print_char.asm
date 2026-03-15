@@ -11,14 +11,12 @@ print_char:
 
     push ebp
     mov ebp, esp
-
-    ; TODO:
-    ; 1. Guardar el caracter en memoria
-    ; 2. Usar syscall write
-    ; 3. Imprimir 1 byte
-
-    ; write(fd=1, buffer, 1)
-
+    push eax ; Empujamos eax para disponer del caracter en la memoria
+    mov eax, 4 ; sys_write
+    mov ebx, 1 ; stdout
+    mov ecx, esp ; Puntero al caracter en el tope de la pila
+    mov edx, 1 ; Tamaño del caracter (1 byte)
+    int 0x80 ; Llamada al kernel
     mov esp, ebp
     pop ebp
     ret
